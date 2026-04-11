@@ -1,0 +1,36 @@
+/* ===== СТРАНИЦА РЕГИСТРАЦИИ ===== */
+/* Использует те же стили что и login.css */
+/* Добавляем только специфичные для регистрации */
+
+.register-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.register-grid .form-group { margin-bottom: 0; }
+
+.password-strength {
+  height: 4px;
+  background: var(--border);
+  border-radius: 2px;
+  margin-top: 8px;
+  overflow: hidden;
+}
+
+.password-strength-bar {
+  height: 100%;
+  border-radius: 2px;
+  transition: var(--transition);
+  width: 0%;
+}
+
+.strength-weak { background: var(--danger); width: 33%; }
+.strength-medium { background: var(--warning); width: 66%; }
+.strength-strong { background: var(--success); width: 100%; }
+
+.password-strength-text {
+  font-size: 12px;
+  margin-top: 4px;
+  color: var(--text-muted);
+}

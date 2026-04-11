@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Войти — АВТО ПРОКАТ</title>
+  <link rel="stylesheet" href="../css/main.css">
+</head>
+<body>
+
+  <div class="auth-page">
+    <!-- ЛЕВАЯ ЧАСТЬ -->
+    <div class="auth-left">
+      <div class="auth-left-content">
+        <a href="index.html" class="auth-logo">🚗 AVTO<span>ПРОКАТ</span></a>
+        <h1 class="auth-headline">Добро<br>пожаловать<br><span>обратно!</span></h1>
+        <p class="auth-tagline">Войдите в аккаунт чтобы управлять своими бронированиями и получить доступ к эксклюзивным предложениям.</p>
+        <div class="auth-features">
+          <div class="auth-feature">
+            <div class="auth-feature-icon">🚗</div>
+            Более 200 автомобилей в каталоге
+          </div>
+          <div class="auth-feature">
+            <div class="auth-feature-icon">⚡</div>
+            Мгновенное бронирование онлайн
+          </div>
+          <div class="auth-feature">
+            <div class="auth-feature-icon">🛡️</div>
+            Полная страховка включена
+          </div>
+          <div class="auth-feature">
+            <div class="auth-feature-icon">💰</div>
+            Без скрытых платежей
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ПРАВАЯ ЧАСТЬ -->
+    <div class="auth-right">
+      <div class="auth-form-wrap">
+        <h2 class="auth-form-title">Вход в аккаунт</h2>
+        <p class="auth-form-subtitle">Нет аккаунта? <a href="register.html">Зарегистрироваться</a></p>
+
+        <div class="alert alert-error" id="alertError"></div>
+        <div class="alert alert-success" id="alertSuccess"></div>
+
+        <div class="form-group">
+          <label class="form-label">Email</label>
+          <div class="input-icon-wrap">
+            <span class="input-icon">📧</span>
+            <input type="email" class="form-input" id="email" placeholder="you@example.com">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Пароль</label>
+          <div class="input-icon-wrap">
+            <span class="input-icon">🔒</span>
+            <input type="password" class="form-input" id="password" placeholder="Ваш пароль">
+          </div>
+        </div>
+
+        <div class="form-forgot">
+          <a href="#">Забыли пароль?</a>
+        </div>
+
+        <button class="btn btn-primary btn-full" id="loginBtn" onclick="handleLogin()">
+          Войти →
+        </button>
+
+        <div class="auth-divider">или</div>
+
+        <div style="text-align:center;font-size:14px;color:var(--text-secondary);">
+          Для теста: <strong style="color:var(--primary);">admin@avto.kz</strong> / <strong style="color:var(--primary);">admin123</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/login.js"></script>
+</body>
+</html>

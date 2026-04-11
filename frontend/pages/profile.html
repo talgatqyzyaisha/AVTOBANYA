@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Профиль — АВТО ПРОКАТ</title>
+  <link rel="stylesheet" href="../css/main.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="index.html" class="navbar-logo">🚗 AVTO<span>ПРОКАТ</span></a>
+    <div class="navbar-links">
+      <a href="index.html">Главная</a>
+      <a href="cars.html">Каталог</a>
+    </div>
+    <div class="navbar-actions" id="navActions"></div>
+  </nav>
+
+  <div class="profile-page">
+    <div class="profile-header">
+      <div class="container">
+        <div class="profile-header-inner">
+          <div class="profile-avatar" id="profileAvatar">?</div>
+          <div>
+            <div class="profile-name" id="profileName">Загрузка...</div>
+            <div class="profile-email" id="profileEmail"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="profile-layout">
+
+        <!-- НАВИГАЦИЯ -->
+        <nav class="profile-nav">
+          <div class="profile-nav-item active" onclick="showPanel('bookings', this)">
+            <span>📋</span> Мои брони
+          </div>
+          <div class="profile-nav-item" onclick="showPanel('settings', this)">
+            <span>⚙️</span> Настройки
+          </div>
+          <div class="profile-nav-item" onclick="logout()" style="color:var(--danger);margin-top:auto;">
+            <span>🚪</span> Выйти
+          </div>
+        </nav>
+
+        <!-- КОНТЕНТ -->
+        <div class="profile-content">
+
+          <!-- МОИ БРОНИ -->
+          <div class="profile-panel active" id="panel-bookings">
+            <div class="profile-panel-title">Мои бронирования</div>
+            <div id="bookingsList">
+              <div class="loader"></div>
+            </div>
+          </div>
+
+          <!-- НАСТРОЙКИ -->
+          <div class="profile-panel" id="panel-settings">
+            <div class="profile-panel-title">Настройки профиля</div>
+            <div class="alert alert-success" id="settingsSuccess"></div>
+            <div class="form-group">
+              <label class="form-label">Имя</label>
+              <input type="text" class="form-input" id="settingsName">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Телефон</label>
+              <input type="tel" class="form-input" id="settingsPhone">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Email</label>
+              <input type="email" class="form-input" id="settingsEmail" disabled>
+            </div>
+            <button class="btn btn-primary" onclick="saveSettings()">Сохранить изменения</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/profile.js"></script>
+</body>
+</html>

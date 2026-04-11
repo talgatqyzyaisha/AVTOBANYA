@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Каталог — АВТО ПРОКАТ</title>
+  <link rel="stylesheet" href="../css/main.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="index.html" class="navbar-logo">🚗 AVTO<span>ПРОКАТ</span></a>
+    <div class="navbar-links">
+      <a href="index.html">Главная</a>
+      <a href="cars.html" class="active">Каталог</a>
+    </div>
+    <div class="navbar-actions" id="navActions"></div>
+  </nav>
+
+  <div class="cars-page">
+    <div class="cars-header">
+      <div class="container">
+        <h1 class="cars-header-title">Каталог автомобилей</h1>
+        <p class="cars-header-sub">Найдите идеальный автомобиль для вашей поездки</p>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="cars-layout">
+
+        <!-- ФИЛЬТРЫ -->
+        <aside class="filters-panel">
+          <div class="filters-title">🔍 Фильтры</div>
+
+          <div class="filter-group">
+            <span class="filter-label">Категория</span>
+            <div class="filter-options">
+              <label class="filter-option"><input type="checkbox" value="Седан" onchange="applyFilters()"> Седан</label>
+              <label class="filter-option"><input type="checkbox" value="Внедорожник" onchange="applyFilters()"> Внедорожник</label>
+              <label class="filter-option"><input type="checkbox" value="Кроссовер" onchange="applyFilters()"> Кроссовер</label>
+            </div>
+          </div>
+
+          <div class="filter-group">
+            <span class="filter-label">Коробка передач</span>
+            <div class="filter-options">
+              <label class="filter-option"><input type="checkbox" value="Автомат" onchange="applyFilters()"> Автомат</label>
+              <label class="filter-option"><input type="checkbox" value="Механика" onchange="applyFilters()"> Механика</label>
+            </div>
+          </div>
+
+          <div class="filter-group">
+            <span class="filter-label">Топливо</span>
+            <div class="filter-options">
+              <label class="filter-option"><input type="checkbox" value="Бензин" onchange="applyFilters()"> Бензин</label>
+              <label class="filter-option"><input type="checkbox" value="Дизель" onchange="applyFilters()"> Дизель</label>
+              <label class="filter-option"><input type="checkbox" value="Электро" onchange="applyFilters()"> Электро</label>
+            </div>
+          </div>
+
+          <div class="filter-group">
+            <span class="filter-label">Цена в день (₸)</span>
+            <div class="price-range">
+              <input type="number" id="minPrice" placeholder="От" oninput="applyFilters()">
+              <span>—</span>
+              <input type="number" id="maxPrice" placeholder="До" oninput="applyFilters()">
+            </div>
+          </div>
+
+          <button class="btn btn-outline btn-sm" style="width:100%;justify-content:center;" onclick="resetFilters()">
+            Сбросить фильтры
+          </button>
+        </aside>
+
+        <!-- КАТАЛОГ -->
+        <div class="catalog-content">
+          <div class="catalog-top">
+            <div class="catalog-count">Найдено: <strong id="carsCount">0</strong> авто</div>
+            <div class="catalog-sort">
+              Сортировка:
+              <select id="sortSelect" onchange="applyFilters()">
+                <option value="default">По умолчанию</option>
+                <option value="price_asc">Цена: по возрастанию</option>
+                <option value="price_desc">Цена: по убыванию</option>
+                <option value="year_desc">Год: новые первые</option>
+              </select>
+            </div>
+          </div>
+          <div class="catalog-grid" id="carsGrid">
+            <div class="loader"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/cars.js"></script>
+</body>
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Админ — АВТО ПРОКАТ</title>
+  <link rel="stylesheet" href="../css/main.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="index.html" class="navbar-logo">🚗 AVTO<span>ПРОКАТ</span></a>
+    <div class="navbar-actions" id="navActions"></div>
+  </nav>
+
+  <div class="admin-page">
+    <div class="admin-layout">
+
+      <!-- САЙДБАР -->
+      <aside class="admin-sidebar">
+        <div class="admin-sidebar-title">Главное</div>
+        <div class="admin-nav-item active" onclick="showAdminPanel('dashboard', this)">📊 Дашборд</div>
+        <div class="admin-nav-item" onclick="showAdminPanel('bookings', this)">
+          📋 Бронирования
+          <span class="admin-nav-badge" id="pendingBadge">0</span>
+        </div>
+
+        <div class="admin-sidebar-title">Управление</div>
+        <div class="admin-nav-item" onclick="showAdminPanel('cars', this)">🚗 Автомобили</div>
+        <div class="admin-nav-item" onclick="showAdminPanel('users', this)">👥 Пользователи</div>
+
+        <div class="admin-sidebar-title" style="margin-top:auto;"></div>
+        <div class="admin-nav-item" onclick="logout()" style="color:var(--danger);">🚪 Выйти</div>
+      </aside>
+
+      <!-- ОСНОВНОЙ КОНТЕНТ -->
+      <main class="admin-main">
+
+        <!-- ДАШБОРД -->
+        <div class="admin-panel active" id="panel-dashboard">
+          <div class="admin-topbar">
+            <div class="admin-page-title">📊 Дашборд</div>
+          </div>
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-icon red">🚗</div>
+              <div>
+                <div class="stat-num" id="statCars">—</div>
+                <div class="stat-label">Автомобилей</div>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon blue">👥</div>
+              <div>
+                <div class="stat-num" id="statUsers">—</div>
+                <div class="stat-label">Пользователей</div>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon orange">📋</div>
+              <div>
+                <div class="stat-num" id="statBookings">—</div>
+                <div class="stat-label">Бронирований</div>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon green">💰</div>
+              <div>
+                <div class="stat-num" id="statRevenue">—</div>
+                <div class="stat-label">Выручка (₸)</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- БРОНИРОВАНИЯ -->
+        <div class="admin-panel" id="panel-bookings">
+          <div class="admin-topbar">
+            <div class="admin-page-title">📋 Бронирования</div>
+          </div>
+          <div class="admin-table-wrap">
+            <div class="admin-table-header">
+              <div class="admin-table-title">Все бронирования</div>
+            </div>
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Клиент</th>
+                  <th>Авто</th>
+                  <th>Даты</th>
+                  <th>Сумма</th>
+                  <th>Статус</th>
+                  <th>Действия</th>
+                </tr>
+              </thead>
+              <tbody id="bookingsTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- МАШИНЫ -->
+        <div class="admin-panel" id="panel-cars">
+          <div class="admin-topbar">
+            <div class="admin-page-title">🚗 Автомобили</div>
+            <button class="btn btn-primary btn-sm" onclick="showAddCarModal()">+ Добавить авто</button>
+          </div>
+          <div class="admin-table-wrap">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Авто</th>
+                  <th>Категория</th>
+                  <th>Цена/день</th>
+                  <th>КПП</th>
+                  <th>Статус</th>
+                  <th>Действия</th>
+                </tr>
+              </thead>
+              <tbody id="carsTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- ПОЛЬЗОВАТЕЛИ -->
+        <div class="admin-panel" id="panel-users">
+          <div class="admin-topbar">
+            <div class="admin-page-title">👥 Пользователи</div>
+          </div>
+          <div class="admin-table-wrap">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Имя</th>
+                  <th>Email</th>
+                  <th>Телефон</th>
+                  <th>Роль</th>
+                  <th>Дата регистрации</th>
+                  <th>Действия</th>
+                </tr>
+              </thead>
+              <tbody id="usersTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- МОДАЛКА ДОБАВЛЕНИЯ АВТО -->
+  <div id="carModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:2000;align-items:center;justify-content:center;">
+    <div style="background:var(--bg-card);border-radius:var(--radius-lg);padding:36px;width:100%;max-width:560px;border:1px solid var(--border);">
+      <h3 style="font-size:20px;font-weight:700;margin-bottom:24px;">Добавить автомобиль</h3>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+        <div class="form-group"><label class="form-label">Марка</label><input type="text" class="form-input" id="carBrand" placeholder="Toyota"></div>
+        <div class="form-group"><label class="form-label">Модель</label><input type="text" class="form-input" id="carModel" placeholder="Camry"></div>
+        <div class="form-group"><label class="form-label">Год</label><input type="number" class="form-input" id="carYear" placeholder="2023"></div>
+        <div class="form-group"><label class="form-label">Цена/день (₸)</label><input type="number" class="form-input" id="carPrice" placeholder="15000"></div>
+        <div class="form-group"><label class="form-label">Категория</label>
+          <select class="form-input" id="carCategory">
+            <option>Седан</option><option>Внедорожник</option><option>Кроссовер</option>
+          </select>
+        </div>
+        <div class="form-group"><label class="form-label">КПП</label>
+          <select class="form-input" id="carTransmission">
+            <option>Автомат</option><option>Механика</option>
+          </select>
+        </div>
+        <div class="form-group"><label class="form-label">Топливо</label>
+          <select class="form-input" id="carFuel">
+            <option>Бензин</option><option>Дизель</option><option>Электро</option>
+          </select>
+        </div>
+        <div class="form-group"><label class="form-label">Мест</label><input type="number" class="form-input" id="carSeats" value="5"></div>
+      </div>
+      <div class="form-group"><label class="form-label">Описание</label><textarea class="form-input" id="carDesc" rows="2"></textarea></div>
+      <div style="display:flex;gap:12px;justify-content:flex-end;margin-top:8px;">
+        <button class="btn btn-outline" onclick="closeCarModal()">Отмена</button>
+        <button class="btn btn-primary" onclick="addCar()">Добавить</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/admin.js"></script>
+</body>
+</html>

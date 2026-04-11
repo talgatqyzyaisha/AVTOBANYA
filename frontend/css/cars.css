@@ -1,0 +1,149 @@
+/* ===== КАТАЛОГ МАШИН ===== */
+
+.cars-page {
+  padding-top: 70px;
+  min-height: 100vh;
+}
+
+.cars-header {
+  background: var(--bg-card);
+  border-bottom: 1px solid var(--border);
+  padding: 40px 0;
+}
+
+.cars-header-title { font-size: 36px; font-weight: 800; margin-bottom: 8px; }
+.cars-header-sub { color: var(--text-secondary); font-size: 15px; }
+
+.cars-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 32px;
+  padding: 40px 0;
+}
+
+/* Фильтры */
+.filters-panel {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  height: fit-content;
+  position: sticky;
+  top: 90px;
+}
+
+.filters-title {
+  font-size: 17px;
+  font-weight: 700;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.filter-group { margin-bottom: 24px; }
+
+.filter-label {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+  display: block;
+}
+
+.filter-options { display: flex; flex-direction: column; gap: 8px; }
+
+.filter-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--text-secondary);
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  transition: var(--transition);
+}
+
+.filter-option:hover { background: var(--bg-input); color: var(--text-primary); }
+.filter-option.active { background: rgba(230,57,70,0.1); color: var(--primary); }
+
+.filter-option input[type="checkbox"] { accent-color: var(--primary); }
+
+.price-range {
+  gap: 10px;
+  align-items: center;
+}
+
+.price-range input {
+  flex: 1;
+  background: var(--bg-input);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  outline: none;
+}
+
+.price-range input:focus { border-color: var(--primary); }
+.price-range span { color: var(--text-muted); }
+
+/* Каталог */
+.catalog-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.catalog-count {
+  font-size: 15px;
+  color: var(--text-secondary);
+}
+.catalog-count strong { color: var(--text-primary); }
+
+.catalog-sort {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.catalog-sort select {
+  background: var(--bg-input);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  outline: none;
+}
+
+.catalog-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.empty-state {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.empty-icon { font-size: 64px; margin-bottom: 16px; }
+.empty-title { font-size: 22px; font-weight: 700; margin-bottom: 8px; }
+.empty-sub { color: var(--text-secondary); }
+
+@media (max-width: 1024px) {
+  .catalog-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .cars-layout { grid-template-columns: 1fr; }
+  .filters-panel { position: static; }
+  .catalog-grid { grid-template-columns: 1fr; }
+}

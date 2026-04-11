@@ -1,0 +1,125 @@
+/* ===== ЛИЧНЫЙ КАБИНЕТ ===== */
+
+.profile-page {
+  padding-top: 70px;
+  min-height: 100vh;
+}
+
+.profile-header {
+  background: var(--bg-card);
+  border-bottom: 1px solid var(--border);
+  padding: 40px 0;
+}
+
+.profile-header-inner {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.profile-avatar {
+  width: 80px; height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+.profile-name { font-size: 28px; font-weight: 800; margin-bottom: 4px; }
+.profile-email { color: var(--text-secondary); font-size: 15px; }
+
+.profile-layout {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 32px;
+  padding: 40px 0;
+}
+
+.profile-nav {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  height: fit-content;
+  position: sticky;
+  top: 90px;
+}
+
+.profile-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: var(--transition);
+  margin-bottom: 4px;
+}
+
+.profile-nav-item:hover { background: var(--bg-input); color: var(--text-primary); }
+.profile-nav-item.active { background: rgba(230,57,70,0.1); color: var(--primary); }
+.profile-nav-item span:first-child { font-size: 18px; }
+
+.profile-content { display: flex; flex-direction: column; gap: 24px; }
+
+.profile-panel {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  display: none;
+}
+
+.profile-panel.active { display: block; }
+
+.profile-panel-title {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 28px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* Карточки бронирований */
+.booking-card {
+  background: var(--bg-input);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  margin-bottom: 16px;
+  border: 1px solid var(--border);
+  transition: var(--transition);
+}
+
+.booking-card:hover { border-color: var(--border-hover); }
+
+.booking-car-thumb {
+  font-size: 42px;
+  width: 70px; height: 70px;
+  background: var(--bg-card);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.booking-info { flex: 1; }
+.booking-car-name { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+.booking-dates { font-size: 13px; color: var(--text-secondary); margin-bottom: 8px; }
+.booking-price { font-size: 18px; font-weight: 700; color: var(--primary); }
+.booking-actions { display: flex; gap: 8px; }
+
+@media (max-width: 768px) {
+  .profile-layout { grid-template-columns: 1fr; }
+  .profile-nav { position: static; }
+}

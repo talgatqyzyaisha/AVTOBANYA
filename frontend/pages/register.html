@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Регистрация — АВТО ПРОКАТ</title>
+  <link rel="stylesheet" href="../css/main.css">
+</head>
+<body>
+
+  <div class="auth-page">
+    <div class="auth-left">
+      <div class="auth-left-content">
+        <a href="index.html" class="auth-logo">🚗 AVTO<span>ПРОКАТ</span></a>
+        <h1 class="auth-headline">Создайте<br>аккаунт<br><span>бесплатно!</span></h1>
+        <p class="auth-tagline">Зарегистрируйтесь и получите скидку 10% на первую аренду. Быстро и без лишних шагов.</p>
+        <div class="auth-features">
+          <div class="auth-feature">
+            <div class="auth-feature-icon">🎁</div>
+            Скидка 10% на первый заказ
+          </div>
+          <div class="auth-feature">
+            <div class="auth-feature-icon">📱</div>
+            Управление бронями онлайн
+          </div>
+          <div class="auth-feature">
+            <div class="auth-feature-icon">🔔</div>
+            Уведомления о статусе заявки
+          </div>
+          <div class="auth-feature">
+            <div class="auth-feature-icon">⭐</div>
+            Накопительная система бонусов
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="auth-right">
+      <div class="auth-form-wrap">
+        <h2 class="auth-form-title">Регистрация</h2>
+        <p class="auth-form-subtitle">Уже есть аккаунт? <a href="login.html">Войти</a></p>
+
+        <div class="alert alert-error" id="alertError"></div>
+        <div class="alert alert-success" id="alertSuccess"></div>
+
+        <div class="register-grid">
+          <div class="form-group">
+            <label class="form-label">Имя</label>
+            <div class="input-icon-wrap">
+              <span class="input-icon">👤</span>
+              <input type="text" class="form-input" id="name" placeholder="Ваше имя">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Телефон</label>
+            <div class="input-icon-wrap">
+              <span class="input-icon">📱</span>
+              <input type="tel" class="form-input" id="phone" placeholder="+7 700 000 00 00">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Email</label>
+          <div class="input-icon-wrap">
+            <span class="input-icon">📧</span>
+            <input type="email" class="form-input" id="email" placeholder="you@example.com">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Пароль</label>
+          <div class="input-icon-wrap">
+            <span class="input-icon">🔒</span>
+            <input type="password" class="form-input" id="password" placeholder="Минимум 6 символов" oninput="checkStrength(this.value)">
+          </div>
+          <div class="password-strength">
+            <div class="password-strength-bar" id="strengthBar"></div>
+          </div>
+          <div class="password-strength-text" id="strengthText"></div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Повторите пароль</label>
+          <div class="input-icon-wrap">
+            <span class="input-icon">🔒</span>
+            <input type="password" class="form-input" id="confirmPassword" placeholder="Повторите пароль">
+          </div>
+        </div>
+
+        <button class="btn btn-primary btn-full" onclick="handleRegister()">
+          Создать аккаунт →
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/register.js"></script>
+</body>
+</html>

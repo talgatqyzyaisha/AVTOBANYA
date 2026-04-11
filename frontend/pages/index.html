@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AVTO — Прокат автомобилей</title>
+  <link rel="stylesheet" href="../css/main.css">
+</head>
+<body>
+
+  <!-- НАВБАР -->
+  <nav class="navbar">
+    <a href="index.html" class="navbar-logo">🚗 AVTO<span>ПРОКАТ</span></a>
+    <div class="navbar-links">
+      <a href="index.html" class="active">Главная</a>
+      <a href="cars.html">Каталог</a>
+      <a href="#features">Преимущества</a>
+      <a href="#contacts">Контакты</a>
+    </div>
+    <div class="navbar-actions" id="navActions">
+      <a href="login.html" class="btn btn-outline btn-sm">Войти</a>
+      <a href="register.html" class="btn btn-primary btn-sm">Регистрация</a>
+    </div>
+  </nav>
+
+  <!-- ГЕРОЙ -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-content">
+          <div class="hero-tag">🏆 Лучший прокат в городе</div>
+          <h1 class="hero-title">
+            Возьми авто<br>
+            в аренду за<br>
+            <span>5 минут</span>
+          </h1>
+          <p class="hero-subtitle">
+            Большой выбор автомобилей на любой вкус и бюджет.<br>
+            Без залога, без скрытых платежей.
+          </p>
+          <div class="hero-actions">
+            <a href="cars.html" class="btn btn-primary btn-lg">Смотреть каталог →</a>
+            <a href="#how" class="btn btn-outline btn-lg">Как это работает</a>
+          </div>
+          <div class="hero-stats">
+            <div>
+              <div class="hero-stat-num">200+</div>
+              <div class="hero-stat-label">Автомобилей</div>
+            </div>
+            <div>
+              <div class="hero-stat-num">5000+</div>
+              <div class="hero-stat-label">Клиентов</div>
+            </div>
+            <div>
+              <div class="hero-stat-num">4.9⭐</div>
+              <div class="hero-stat-label">Рейтинг</div>
+            </div>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="hero-car-showcase">
+            <span class="hero-car-emoji">🚙</span>
+            <div class="hero-car-info">
+              <div>
+                <div class="hero-car-name">BMW X5 2023</div>
+                <div style="color:var(--text-secondary);font-size:13px;">Внедорожник • Автомат</div>
+              </div>
+              <div class="hero-car-price">35 000 ₸<span style="font-size:13px;color:var(--text-secondary);font-weight:400;">/день</span></div>
+            </div>
+            <div class="floating-badge top-left">✅ Доступна сейчас</div>
+            <div class="floating-badge bottom-right">🔑 Быстрый старт</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ПОИСК -->
+  <section class="search-section">
+    <div class="container">
+      <div class="search-box">
+        <div class="search-field">
+          <label>Категория</label>
+          <select id="searchCategory" onchange="searchCars()">
+            <option value="">Все категории</option>
+            <option value="Седан">Седан</option>
+            <option value="Внедорожник">Внедорожник</option>
+            <option value="Кроссовер">Кроссовер</option>
+          </select>
+        </div>
+        <div class="search-field">
+          <label>Коробка передач</label>
+          <select id="searchTransmission" onchange="searchCars()">
+            <option value="">Любая</option>
+            <option value="Автомат">Автомат</option>
+            <option value="Механика">Механика</option>
+          </select>
+        </div>
+        <div class="search-field">
+          <label>Бюджет в день (₸)</label>
+          <input type="number" id="searchMaxPrice" placeholder="Макс. цена" oninput="searchCars()">
+        </div>
+        <a href="cars.html" class="btn btn-primary">Найти авто</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ПРЕИМУЩЕСТВА -->
+  <section class="section" id="features">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Почему мы</div>
+        <h2 class="section-title">Просто. Быстро. <span>Надёжно</span></h2>
+        <p class="section-subtitle">Мы делаем аренду автомобиля максимально удобной для вас</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">⚡</div>
+          <div class="feature-title">Быстрое оформление</div>
+          <p class="feature-desc">Бронируйте онлайн за 5 минут. Никакой лишней бумажной волокиты</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🛡️</div>
+          <div class="feature-title">Страховка включена</div>
+          <p class="feature-desc">Все автомобили застрахованы. Вы в безопасности на дороге</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">💰</div>
+          <div class="feature-title">Без скрытых платежей</div>
+          <p class="feature-desc">Цена которую вы видите — это именно то, что вы платите</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🕐</div>
+          <div class="feature-title">Поддержка 24/7</div>
+          <p class="feature-desc">Наша команда всегда на связи и готова помочь в любое время</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- КАК ЭТО РАБОТАЕТ -->
+  <section class="section" id="how" style="background:var(--bg-card);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Процесс</div>
+        <h2 class="section-title">Как это <span>работает</span></h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:24px;position:relative;">
+        <div style="position:absolute;top:40px;left:12%;right:12%;height:2px;background:linear-gradient(90deg,var(--primary),var(--primary-dark));z-index:0;"></div>
+        <div class="feature-card" style="position:relative;z-index:1;">
+          <div style="width:56px;height:56px;border-radius:50%;background:var(--primary);color:#fff;font-size:22px;font-weight:800;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;">1</div>
+          <div class="feature-title">Выберите авто</div>
+          <p class="feature-desc">Просмотрите каталог и выберите подходящий автомобиль</p>
+        </div>
+        <div class="feature-card" style="position:relative;z-index:1;">
+          <div style="width:56px;height:56px;border-radius:50%;background:var(--primary);color:#fff;font-size:22px;font-weight:800;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;">2</div>
+          <div class="feature-title">Укажите даты</div>
+          <p class="feature-desc">Выберите даты начала и окончания аренды</p>
+        </div>
+        <div class="feature-card" style="position:relative;z-index:1;">
+          <div style="width:56px;height:56px;border-radius:50%;background:var(--primary);color:#fff;font-size:22px;font-weight:800;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;">3</div>
+          <div class="feature-title">Оформите заявку</div>
+          <p class="feature-desc">Заполните форму бронирования онлайн</p>
+        </div>
+        <div class="feature-card" style="position:relative;z-index:1;">
+          <div style="width:56px;height:56px;border-radius:50%;background:var(--primary);color:#fff;font-size:22px;font-weight:800;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;">4</div>
+          <div class="feature-title">Получите ключи</div>
+          <p class="feature-desc">Приедьте к нам и заберите автомобиль</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ПОПУЛЯРНЫЕ АВТО -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Автопарк</div>
+        <h2 class="section-title">Популярные <span>автомобили</span></h2>
+        <p class="section-subtitle">Самые востребованные авто нашего парка</p>
+      </div>
+      <div class="cars-grid" id="popularCars">
+        <div class="loader"></div>
+      </div>
+      <div style="text-align:center;margin-top:40px;">
+        <a href="cars.html" class="btn btn-outline btn-lg">Весь каталог →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section">
+    <div class="container">
+      <div class="cta-section">
+        <h2 class="cta-title">Готовы к поездке? 🚗</h2>
+        <p class="cta-subtitle">Зарегистрируйтесь и получите скидку 10% на первую аренду</p>
+        <div class="cta-actions">
+          <a href="register.html" class="btn btn-white btn-lg">Начать сейчас</a>
+          <a href="cars.html" class="btn btn-lg" style="background:rgba(255,255,255,0.15);color:#fff;">Смотреть каталог</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ФУТЕР -->
+  <footer class="footer" id="contacts">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">🚗 AVTO<span>ПРОКАТ</span></div>
+          <p class="footer-desc">Лучший сервис аренды автомобилей в городе. Большой выбор, честные цены, отличный сервис.</p>
+        </div>
+        <div>
+          <div class="footer-title">Навигация</div>
+          <div class="footer-links">
+            <a href="index.html">Главная</a>
+            <a href="cars.html">Каталог</a>
+            <a href="booking.html">Бронирование</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-title">Аккаунт</div>
+          <div class="footer-links">
+            <a href="login.html">Войти</a>
+            <a href="register.html">Регистрация</a>
+            <a href="profile.html">Профиль</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-title">Контакты</div>
+          <div class="footer-links">
+            <a href="tel:+77001234567">+7 700 123 45 67</a>
+            <a href="mailto:info@avto.kz">info@avto.kz</a>
+            <a href="#">г. Алматы, ул. Абая 1</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">© 2024 АВТО ПРОКАТ. Все права защищены.</div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/index.js"></script>
+</body>
+</html>
