@@ -9,10 +9,11 @@ app.use(cors());
 app.use(express.json());
 
 // Статические файлы фронтенда
-app.use(express.static(path.join(__dirname, '../frontend/pages')));
+app.use(express.static(path.join(__dirname, '../frontend')));
 app.use('/css', express.static(path.join(__dirname, '../frontend/css')));
 app.use('/js', express.static(path.join(__dirname, '../frontend/js')));
 app.use('/img', express.static(path.join(__dirname, '../frontend/img')));
+app.use('/pages', express.static(path.join(__dirname, '../frontend/pages')));
 
 // Роуты API
 app.use('/api/auth', require('./routes/auth'));
