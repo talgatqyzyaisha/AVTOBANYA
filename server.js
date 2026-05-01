@@ -28,9 +28,21 @@ app.get('/', (req, res) => {
 
 // 4. Обработка остальных путей (чтобы не было Cannot GET)
 app.use((req, res) => {
-  if (!req.path.startsWith('/api')) {
-    res.sendFile(path.join(root, 'frontend/pages/index.html'));
-  }
+  if (req.path.startsWith('/api')) return;
+
+  // Убираем начальный слэш и получаем имя файла (например, "cars")
+  const requestedPath = req.path.slice(1) || 'index';
+  
+  // Путь к файлу в папке frontend/pages
+  const filePath = path.join(root, 'frontend/pages', `${requestedPath}.html`);
+  const indexInRoot = path.join(root, 'frontend/pages/index.html');
+
+  res.sendFile(filePath, (err) => {
+    if (err) {
+      // Если такого файла нет, отдаем главную
+      res.sendFile(indexInRoot);
+    }
+  });
 });
 
 const PORT = process.env.PORT || 3000;
