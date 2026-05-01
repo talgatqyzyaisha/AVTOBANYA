@@ -16,10 +16,7 @@ app.use('/api/cars', require('./routes/cars'));
 app.use('/api/bookings', require('./routes/bookings'));
 app.use('/api/admin', require('./routes/admin'));
 
-// 2. Статика (твои строки)
-app.use('/js', express.static(path.join(root, 'frontend/js')));
-app.use('/css', express.static(path.join(root, 'frontend/css')));
-app.use('/img', express.static(path.join(root, 'frontend/img')));
+// 2. Статика
 app.use(express.static(path.join(root, 'frontend')));
 
 // 3. Главная
@@ -27,19 +24,21 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(root, 'frontend/pages/index.html'));
 });
 
-// 4. Тот самый блок, где была ошибка в скобках
-app.get('*', (req, res, next) => {
+// 4. Максимально простой обработчик БЕЗ звездочки, который не уронит сервер
+app.use((req, res, next) => {
+  // Если это API, просто выходим
   if (req.path.startsWith('/api')) {
     return next();
   }
 
+  // Для всего остального пытаемся найти HTML файл
   const requestedPath = req.path.slice(1) || 'index';
-  const filePath = path.join(root, 'frontend/pages', `${requestedPath}.html`);
-  const indexInRoot = path.join(root, 'frontend/pages/index.html');
+  const filePath = path.join(root, 'frontend/pages', requestedPath + '.html');
 
   res.sendFile(filePath, (err) => {
     if (err) {
-      res.sendFile(indexInRoot);
+      // Если файла нет, кидаем на главную
+      res.sendFile(path.join(root, 'frontend/pages/index.html'));
     }
   });
 });
