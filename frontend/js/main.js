@@ -1,4 +1,4 @@
-const API = 'http://localhost:3000/api';
+const API = 'https://avtobanya-production.up.railway.app/api';
 
 function getToken() {
   return localStorage.getItem('token');
