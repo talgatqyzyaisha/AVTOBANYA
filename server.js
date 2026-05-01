@@ -10,17 +10,17 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// 1. Статические файлы (строго по путям)
-app.use('/js', express.static(path.join(root, 'frontend/js')));
-app.use('/css', express.static(path.join(root, 'frontend/css')));
-app.use('/img', express.static(path.join(root, 'frontend/img')));
-app.use(express.static(path.join(root, 'frontend')));
-
 // 2. Твои роуты API
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/cars', require('./routes/cars'));
 app.use('/api/bookings', require('./routes/bookings'));
 app.use('/api/admin', require('./routes/admin'));
+
+// 1. Статические файлы (строго по путям)
+app.use('/js', express.static(path.join(root, 'frontend/js')));
+app.use('/css', express.static(path.join(root, 'frontend/css')));
+app.use('/img', express.static(path.join(root, 'frontend/img')));
+app.use(express.static(path.join(root, 'frontend')));
 
 // 3. Главная страница
 app.get('/', (req, res) => {
