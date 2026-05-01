@@ -1,4 +1,4 @@
-if (getToken()) window.location.href = 'index.html';
+if (getToken()) window.location.href = '/';
 
 function checkStrength(val) {
   const bar = document.getElementById('strengthBar');
@@ -50,5 +50,5 @@ async function handleRegister() {
   localStorage.setItem('user', JSON.stringify(data.user));
 
   showAlert('alertSuccess', 'Аккаунт создан! Перенаправляем...', 'success');
-  setTimeout(() => { window.location.href = 'index.html'; }, 800);
+  setTimeout(() => { window.location.href = '/'; }, 800);
 }

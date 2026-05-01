@@ -1,5 +1,5 @@
 // Если уже залогинен — редирект
-if (getToken()) window.location.href = 'index.html';
+if (getToken()) window.location.href = '/';
 
 async function handleLogin() {
   const email = document.getElementById('email').value.trim();
@@ -32,7 +32,7 @@ async function handleLogin() {
   showAlert('alertSuccess', 'Успешно! Перенаправляем...', 'success');
 
   setTimeout(() => {
-    window.location.href = data.user.role === 'admin' ? 'admin.html' : 'index.html';
+    window.location.href = data.user.role === 'admin' ? 'admin.html' : '/';
   }, 800);
 }
 

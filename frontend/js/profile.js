@@ -1,4 +1,4 @@
-if (!getToken()) window.location.href = 'login.html';
+if (!getToken()) window.location.href = '/login';
 
 const user = getUser();
 
@@ -27,7 +27,7 @@ async function loadBookings() {
       <div style="text-align:center;padding:60px 20px;color:var(--text-secondary);">
         <div style="font-size:48px;margin-bottom:16px;">📋</div>
         <p>У вас пока нет бронирований</p>
-        <a href="cars.html" class="btn btn-primary" style="margin-top:16px;">Выбрать авто</a>
+        <a href="/cars" class="btn btn-primary" style="margin-top:16px;">Выбрать авто</a>
       </div>
     `;
     return;

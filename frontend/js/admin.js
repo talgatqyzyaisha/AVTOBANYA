@@ -1,5 +1,5 @@
 const adminUser = getUser();
-if (!adminUser || adminUser.role !== 'admin') window.location.href = 'index.html';
+if (!adminUser || adminUser.role !== 'admin') window.location.href = '/';
 
 function showAdminPanel(name, el) {
   document.querySelectorAll('.admin-panel').forEach(p => p.classList.remove('active'));

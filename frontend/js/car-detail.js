@@ -14,7 +14,7 @@ async function loadCarDetail() {
 
     content.innerHTML = `
       <div class="container" style="padding:40px 20px;">
-        <a href="cars.html" style="color:var(--primary);text-decoration:none;font-size:14px;">← Назад в каталог</a>
+        <a href="/cars" style="color:var(--primary);text-decoration:none;font-size:14px;">← Назад в каталог</a>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:32px;">
           
           <!-- ЛЕВАЯ КОЛОНКА С ФОТО -->
@@ -74,10 +74,10 @@ async function loadCarDetail() {
 
 function goBook(carId) {
   if (!getToken()) {
-    window.location.href = 'login.html';
+    window.location.href = '/login';
     return;
   }
-  window.location.href = 'booking.html?id=' + carId;
+  window.location.href = '/booking?id=' + carId;
 }
 
 loadCarDetail();

@@ -17,7 +17,7 @@ function searchCars() {
   if (category) params.set('category', category);
   if (transmission) params.set('transmission', transmission);
   if (maxPrice) params.set('maxPrice', maxPrice);
-  window.location.href = 'cars.html?' + params.toString();
+  window.location.href = '/cars?' + params.toString();
 }
 
 

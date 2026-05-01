@@ -87,7 +87,7 @@ function carCardHTML(car) {
             <span class="price-value">${car.price_per_day} ₸</span>
             <span class="price-period">/ день</span>
           </div>
-          <a href="car-detail.html?id=${car.id}" class="btn btn-primary">Забронировать</a>
+          <a href="/car-detail?id=${car.id}" class="btn btn-primary">Забронировать</a>
         </div>
       </div>
     </div>

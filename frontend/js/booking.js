@@ -1,10 +1,10 @@
-if (!getToken()) window.location.href = 'login.html';
+if (!getToken()) window.location.href = '/login';
 
 let currentCar = null;
 
 async function loadCar() {
   const id = getParam('id');
-  if (!id) { window.location.href = 'cars.html'; return; }
+  if (!id) { window.location.href = '/cars'; return; }
 
   currentCar = await apiFetch('/cars/' + id);
 
@@ -90,8 +90,8 @@ async function handleBooking() {
         Итого: ${formatPrice(data.total_price)}
       </p>
       <div style="display:flex;gap:12px;justify-content:center;">
-        <a href="profile.html" class="btn btn-primary">Мои бронирования</a>
-        <a href="cars.html" class="btn btn-outline">В каталог</a>
+        <a href="/profile" class="btn btn-primary">Мои бронирования</a>
+        <a href="/cars" class="btn btn-outline">В каталог</a>
       </div>
     </div>
   `;

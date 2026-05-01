@@ -13,7 +13,7 @@ function getUser() {
 function logout() {
   localStorage.removeItem('token');
   localStorage.removeItem('user');
-  window.location.href = 'index.html';
+  window.location.href = '/';
 }
 
 function formatPrice(price) {
@@ -34,13 +34,13 @@ function renderNavbar() {
   const user = getUser();
   if (user) {
     nav.innerHTML = `
-      <a href="profile.html" class="btn btn-outline btn-sm">👤 ${user.name}</a>
-      ${user.role === 'admin' ? '<a href="admin.html" class="btn btn-primary btn-sm">⚙️ Админ</a>' : ''}
+      <a href="/profile" class="btn btn-outline btn-sm">👤 ${user.name}</a>
+      ${user.role === 'admin' ? '<a href="/admin" class="btn btn-primary btn-sm">⚙️ Админ</a>' : ''}
     `;
   } else {
     nav.innerHTML = `
-      <a href="login.html" class="btn btn-outline btn-sm">Войти</a>
-      <a href="register.html" class="btn btn-primary btn-sm">Регистрация</a>
+      <a href="/login" class="btn btn-outline btn-sm">Войти</a>
+      <a href="/register" class="btn btn-primary btn-sm">Регистрация</a>
     `;
   }
 }
