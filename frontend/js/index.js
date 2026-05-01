@@ -20,4 +20,5 @@ function searchCars() {
   window.location.href = 'cars.html?' + params.toString();
 }
 
+
 loadPopularCars();

@@ -62,4 +62,36 @@ function resetFilters() {
   applyFilters();
 }
 
+function carCardHTML(car) {
+  if (!car) return '';
+
+  const imagePath = car.image ? `../img/${car.image}` : "../img/default.png";
+
+  return `
+    <div class="car-card">
+      <div class="car-card-img">
+        <img src="${imagePath}" alt="${car.brand} ${car.model}" onerror="this.src='../img/default.png'">
+      </div>
+      <div class="car-card-info">
+        <h3 class="car-title">${car.brand} ${car.model}</h3>
+        <div class="car-subtitle">${car.year} • ${car.category}</div>
+        
+        <div class="car-features">
+          <div class="feature">⚙️ ${car.transmission}</div>
+          <div class="feature">⛽ ${car.fuel}</div>
+          <div class="feature">👥 ${car.seats} мест</div>
+        </div>
+
+        <div class="car-footer">
+          <div class="car-price">
+            <span class="price-value">${car.price_per_day} ₸</span>
+            <span class="price-period">/ день</span>
+          </div>
+          <a href="car-detail.html?id=${car.id}" class="btn btn-primary">Забронировать</a>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
 loadCars();

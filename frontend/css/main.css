@@ -1,4 +1,5 @@
 /* ===== ИМПОРТЫ ВСЕХ СТИЛЕЙ ===== */
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 @import './index.css';
 @import './login.css';
@@ -136,7 +137,7 @@ input, select, textarea { font-family: inherit; }
   backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--border);
   padding: 0 40px;
-  height: 70px;
+  height: 80px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -146,9 +147,23 @@ input, select, textarea { font-family: inherit; }
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 22px;
+  font-size: 24px;
   font-weight: 800;
   color: var(--text-primary);
+}
+
+.navbar-logo img {
+  width: 85px !important;
+  height: 85px !important;
+  object-fit: contain;
+  border-radius: var(--radius-sm);
+}
+
+.footer-brand img {
+    width: 50px !important;
+    height: 50px !important;
+    object-fit: contain;
+    margin-bottom: 10px;
 }
 
 .navbar-logo span { color: var(--primary); }

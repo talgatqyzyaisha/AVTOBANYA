@@ -9,19 +9,24 @@ async function loadCarDetail() {
 
   try {
     const car = await apiFetch('/cars/' + id);
-    const emoji = carEmoji(car.category);
+    
+    const imagePath = car.image ? `../img/${car.image}` : `../img/default.png` ;
 
     content.innerHTML = `
       <div class="container" style="padding:40px 20px;">
         <a href="cars.html" style="color:var(--primary);text-decoration:none;font-size:14px;">← Назад в каталог</a>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:32px;">
           
+          <!-- ЛЕВАЯ КОЛОНКА С ФОТО -->
           <div>
-            <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);display:flex;align-items:center;justify-content:center;height:320px;font-size:120px;">
-              ${emoji}
+            <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;height:400px;display:flex;align-items:center;justify-content:center;">
+              <img src="${imagePath}" alt="${car.brand}" 
+                   style="width:100%; height:100%; object-fit:cover;" 
+                   onerror="this.src='../img/default.png'">
             </div>
           </div>
 
+          <!-- ПРАВАЯ КОЛОНКА С ИНФО -->
           <div>
             <div style="font-size:13px;color:var(--primary);font-weight:600;margin-bottom:8px;">${car.category}</div>
             <h1 style="font-size:32px;font-weight:800;margin-bottom:8px;">${car.brand} ${car.model}</h1>

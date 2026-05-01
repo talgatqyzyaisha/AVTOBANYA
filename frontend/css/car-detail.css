@@ -98,6 +98,41 @@
   margin-bottom: 40px;
 }
 
+.car-card-info {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    background: var(--bg-card);
+}
+
+.car-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 8px;
+}
+
+/* Каждая отдельная характеристика */
+.feature {
+    background: var(--bg-input);
+    padding: 8px 12px;
+    border-radius: var(--radius-md);
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.car-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+}
+
 .tab-btn {
   padding: 12px 24px;
   background: none;

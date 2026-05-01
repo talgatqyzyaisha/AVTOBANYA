@@ -4,6 +4,7 @@ function getToken() {
   return localStorage.getItem('token');
 }
 
+
 function getUser() {
   const u = localStorage.getItem('user');
   return u ? JSON.parse(u) : null;
