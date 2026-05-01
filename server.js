@@ -27,7 +27,7 @@ app.get('/', (req, res) => {
 });
 
 // 4. Обработка остальных путей (чтобы не было Cannot GET)
-app.get('/:any(.*)', (req, res) => {
+app.get('/:path*', (req, res) => {
   if (!req.path.startsWith('/api')) {
     res.sendFile(path.join(root, 'frontend/pages/index.html'));
   }
