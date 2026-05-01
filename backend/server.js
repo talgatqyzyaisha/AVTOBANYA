@@ -16,10 +16,10 @@ app.use('/img', express.static(path.join(root, 'frontend/img')));
 app.use(express.static(path.join(root, 'frontend')));
 
 // 2. Твои роуты API
-app.use('/api/auth', require('./routes/auth'));
-app.use('/api/cars', require('./routes/cars'));
-app.use('/api/bookings', require('./routes/bookings'));
-app.use('/api/admin', require('./routes/admin'));
+app.use('/api/auth', require('./backend/routes/auth'));
+app.use('/api/cars', require('./backend/routes/cars'));
+app.use('/api/bookings', require('./backend/routes/bookings'));
+app.use('/api/admin', require('./backend/routes/admin'));
 
 // 3. Главная страница
 app.get('/', (req, res) => {
