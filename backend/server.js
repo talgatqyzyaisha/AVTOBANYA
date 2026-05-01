@@ -8,12 +8,13 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Статические файлы фронтенда
-app.use(express.static(path.join(__dirname, '../frontend')));
-app.use('/css', express.static(path.join(__dirname, '../frontend/css')));
-app.use('/js', express.static(path.join(__dirname, '../frontend/js')));
-app.use('/img', express.static(path.join(__dirname, '../frontend/img')));
-app.use('/pages', express.static(path.join(__dirname, '../frontend/pages')));
+const root = process.cwd(); 
+
+// Статические файлы (теперь ищем от корня проекта AVTO)
+app.use(express.static(path.join(root, 'frontend')));
+app.use('/js', express.static(path.join(root, 'frontend/js')));
+app.use('/css', express.static(path.join(root, 'frontend/css')));
+app.use('/img', express.static(path.join(root, 'frontend/img')));
 
 // Роуты API
 app.use('/api/auth', require('./routes/auth'));
@@ -23,8 +24,17 @@ app.use('/api/admin', require('./routes/admin'));
 
 // Главная страница
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '../frontend/pages/index.html'));
+  res.sendFile(path.join(root, 'frontend/pages/index.html'));
 });
+
+// Чтобы не было "Cannot GET" при перезагрузке страниц (например, /cars)
+app.get('*', (req, res, next) => {
+  if (!req.path.startsWith('/api')) {
+    return res.sendFile(path.join(root, 'frontend/pages/index.html'));
+  }
+  next();
+});
+// --------------------------------
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
