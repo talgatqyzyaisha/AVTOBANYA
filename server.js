@@ -4,43 +4,43 @@ const cors = require('cors');
 const path = require('path');
 
 const app = express();
-const root = process.cwd(); // Тот самый корень проекта
+const root = process.cwd();
 
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// 2. Твои роуты API
+// 1. Роуты API (ОСТАВЛЯЕМ КАК ЕСТЬ)
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/cars', require('./routes/cars'));
 app.use('/api/bookings', require('./routes/bookings'));
 app.use('/api/admin', require('./routes/admin'));
 
-// 1. Статические файлы (строго по путям)
-app.use('/js', express.static(path.join(root, 'frontend/js')));
-app.use('/css', express.static(path.join(root, 'frontend/css')));
-app.use('/img', express.static(path.join(root, 'frontend/img')));
+// 2. Статические файлы (УПРОЩАЕМ)
+// Теперь сервер будет сам искать файлы в папке frontend (js, css, img)
 app.use(express.static(path.join(root, 'frontend')));
 
-// 3. Главная страница
+// 3. Главная страница (ОСТАВЛЯЕМ)
 app.get('/', (req, res) => {
   res.sendFile(path.join(root, 'frontend/pages/index.html'));
 });
 
-// 4. Обработка остальных путей (чтобы не было Cannot GET)
-app.use((req, res) => {
-  if (req.path.startsWith('/api')) return;
+// 4. ОБРАБОТКА ОСТАЛЬНЫХ ПУТЕЙ (ВОТ ТУТ ГЛАВНЫЕ ПРАВКИ)
+app.get('*', (req, res, next) => {
+  // Если это API, и мы дошли сюда, значит такой маршрут не найден в блоке №1.
+  // Мы должны передать управление дальше, чтобы Express выдал 404, а не слал HTML.
+  if (req.path.startsWith('/api')) {
+    return next();
+  }
 
-  // Убираем начальный слэш и получаем имя файла (например, "cars")
+  // Логика чистых ссылок
   const requestedPath = req.path.slice(1) || 'index';
-  
-  // Путь к файлу в папке frontend/pages
-  const filePath = path.join(root, 'frontend/pages', `${requestedPath}.html`);
+  const filePath = path.join(root, 'frontend/pages', ${requestedPath}.html);
   const indexInRoot = path.join(root, 'frontend/pages/index.html');
 
   res.sendFile(filePath, (err) => {
     if (err) {
-      // Если такого файла нет, отдаем главную
+      // Если файла нет, отдаем главную
       res.sendFile(indexInRoot);
     }
   });

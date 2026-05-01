@@ -32,7 +32,7 @@ async function handleLogin() {
   showAlert('alertSuccess', 'Успешно! Перенаправляем...', 'success');
 
   setTimeout(() => {
-    window.location.href = data.user.role === 'admin' ? 'admin.html' : '/';
+    window.location.href = data.user.role === 'admin' ? '/admin' : '/';
   }, 800);
 }
 
