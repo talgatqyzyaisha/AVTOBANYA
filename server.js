@@ -8,6 +8,7 @@ const root = process.cwd(); // Тот самый корень проекта
 
 app.use(cors());
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // 1. Статические файлы (строго по путям)
 app.use('/js', express.static(path.join(root, 'frontend/js')));
