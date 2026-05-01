@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const db = require('../database');
-const { adminMiddleware } = require('../middleware');
+const db = require('../backend/database');
+const { adminMiddleware } = require('../backend/middleware');
 
 // Статистика
 router.get('/stats', adminMiddleware, (req, res) => {

@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const db = require('../database');
+const db = require('../backend/database');
 
 // Регистрация
 router.post('/register', (req, res) => {

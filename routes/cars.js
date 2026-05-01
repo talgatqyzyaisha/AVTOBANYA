@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const db = require('../database');
-const { authMiddleware, adminMiddleware } = require('../middleware');
+const db = require('../backend/database');
+const { authMiddleware, adminMiddleware } = require('../backend/middleware');
 
 // Все машины с фильтрами
 router.get('/', (req, res) => {
