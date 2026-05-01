@@ -27,13 +27,13 @@ app.get('/', (req, res) => {
 });
 
 // 4. Обработка остальных путей (чтобы не было Cannot GET)
-app.get('*', (req, res) => {
+app.get('/:any(.*)', (req, res) => {
   if (!req.path.startsWith('/api')) {
     res.sendFile(path.join(root, 'frontend/pages/index.html'));
   }
 });
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
   console.log(`🚀 Сервер запущен на порту ${PORT}`);
 });
