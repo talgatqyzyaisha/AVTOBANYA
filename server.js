@@ -21,29 +21,26 @@ app.use('/api/admin', require('./routes/admin'));
 app.use(express.static(path.join(root, 'frontend')));
 
 // 3. Главная страница (ОСТАВЛЯЕМ)
+// 3. Главная страница
 app.get('/', (req, res) => {
   res.sendFile(path.join(root, 'frontend/pages/index.html'));
 });
 
-// 4. ОБРАБОТКА ОСТАЛЬНЫХ ПУТЕЙ (ВОТ ТУТ ГЛАВНЫЕ ПРАВКИ)
+// 4. Обработка остальных путей
 app.get('*', (req, res, next) => {
-  // Если это API, и мы дошли сюда, значит такой маршрут не найден в блоке №1.
-  // Мы должны передать управление дальше, чтобы Express выдал 404, а не слал HTML.
   if (req.path.startsWith('/api')) {
     return next();
   }
 
-  // Логика чистых ссылок
   const requestedPath = req.path.slice(1) || 'index';
   const filePath = path.join(root, 'frontend/pages', ${requestedPath}.html);
   const indexInRoot = path.join(root, 'frontend/pages/index.html');
 
   res.sendFile(filePath, (err) => {
     if (err) {
-      // Если файла нет, отдаем главную
       res.sendFile(indexInRoot);
     }
-  });
+  }); // <-- Вот тут часто теряется эта скобка!
 });
 
 const PORT = process.env.PORT || 3000;
